@@ -1,4 +1,4 @@
-# 🕰️ Recon: A Retro Security & Web Tool (Legacy Project)
+# 🔎 Recon: A Retro Security & Web Tool (Legacy Project)
 
 > **"Every complex system we understand today, started with a messy, hardcoded experiment yesterday."**
 
@@ -16,7 +16,7 @@ We wanted a tool that could scan ports, generate sitemaps, find admin panels, an
 
 We have intentionally decided **not** to refactor, update, or "fix" this code. We are preserving it exactly as it was written to serve as a milestone of our learning journey and a reminder of where we started.
 
-## 👥 The Team & Architecture
+## 🤝 The Team & Architecture
 This project was a true collaborative effort. We built the core tool together, while the web infrastructure was handled exclusively by my teammate:
 
 * **Python CLI & Core Tool** | Co-developed by **[ErSHaD](https://github.com/0xErSHaD)** & **[SobhanBagherian](https://github.com/SobhanBagherian/Recon)**
@@ -28,17 +28,15 @@ This project was a true collaborative effort. We built the core tool together, w
   * Designed and managed the MySQL database to store the logs and results.
   * Built the entire bridge for data persistence without any backend intervention from my side.
 
-## ✨ Features (A Full Reconnaissance Arsenal!)
-Despite the raw, hardcoded nature of the tool, it actually packs an impressive set of reconnaissance features based on standard security workflows:
 
-*   🕸️ **Deep-Dive Sitemap:** Crawls target URLs (up to depth 2) using `BeautifulSoup` to map out the website's structure and uncover hidden links.
-*   🔎 **Subdomain & DNS Enumeration:** Uses wordlists and `dnspython` to discover hidden subdomains, then maps them directly to their underlying IP addresses using sockets.
-*   🏷️ **Status & Title Inspector:** Automatically fetches HTTP status codes and page titles to quickly separate live, active pages from dead ends.
-*   📡 **Socket-Based Port Scanner:** Scans discovered IPs for common open ports to identify running services and potential entry points.
-*   🕵️ **Regex Data Extraction:** Scours HTML source codes using Regex to automatically harvest exposed email addresses and phone numbers.
-*   📜 **Whois Lookup:** Retrieves domain registration data (owner info, creation dates) directly from the command line.
-*   💻 **Argparse CLI:** A clean, user-friendly command-line interface to control all these modules efficiently.
-*   ☁️ **Custom PHP/MySQL Backend:** Instead of a local database, the CLI logs all reconnaissance data directly to a remote PHP server for persistent remote storage.
+## ✨ Features
+* 🕸️ **Sitemap Crawler:** Maps website structures up to depth 2 using `BeautifulSoup`.
+* 🔎 **Subdomain Enumeration:** Discovers subdomains using wordlists and `dnspython`.
+* 🏷️ **Status & Title Inspector:** Fetches HTTP codes and page titles.
+* 📡 **Port Scanner:** Socket-based scanner for common open ports.
+* 🕵️ **Regex Data Extraction:** Harvests exposed emails and phone numbers.
+* ☁️ **PHP Backend Integration:** Logs all reconnaissance data directly to a remote database.
+
 
 ## 🚀 How It Actually Works (Setup & Execution)
 Since this tool relies on a custom backend to log and process data, simply running the Python script won't work out of the box. You need to set up the infrastructure first:
