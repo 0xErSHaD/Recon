@@ -1,13 +1,35 @@
 <?php
-$servername = "localhost";
-$username = "example_user";
-$password = "example_password";
-$dbname = "example_database";
+require_once 'config.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password);
 
 if ($conn->connect_error) {
-    die("Error" . $conn->connect_error);
+    die("Error connecting to server: " . $conn->connect_error);
+}
+
+$sql_create_db = "CREATE DATABASE IF NOT EXISTS `$dbname` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
+if ($conn->query($sql_create_db) === FALSE) {
+    die("Error creating database: " . $conn->error);
+}
+
+$conn->select_db($dbname);
+
+$sql_create_table = "CREATE TABLE IF NOT EXISTS `user` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `link` TEXT NULL,
+    `port` VARCHAR(255) NULL,
+    `title` TEXT NULL,
+    `status` VARCHAR(255) NULL,
+    `subdomain` TEXT NULL,
+    `wapplayzer` TEXT NULL,
+    `whois` LONGTEXT NULL,
+    `regex` TEXT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+
+if ($conn->query($sql_create_table) === FALSE) {
+    die("Error creating table: " . $conn->error);
 }
 
 $link = "";

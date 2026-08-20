@@ -1,8 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "er1xyz_recone";
-$password = "RT%;_#jyYqfK";
-$dbname = "er1xyz_recone";
+require_once 'config.php';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
