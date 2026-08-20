@@ -49,6 +49,9 @@ except :
     os.system('cls')    
 # ------------------------- #
 
+# --- [ Configuration ] --- #
+API_URL = "https://yourdomain.com/Recon/recon-get.php"
+# ------------------------- #
 
 # --- [ args ] --- #
 parser = argparse.ArgumentParser(description='Process some inputs.')
@@ -65,9 +68,9 @@ args = parser.parse_args()
 def banner() :
     print("""
 ╔═════════════════════════════════════════════════[ Recon ]═════════════════════════════════════════════════╗
-╠ SobhanBagherian => https://github.com/SobhanBagherian/Recon                                                                ║
-╠ ErSHaD => https://github.com/0xErSHaD/Recon                                                              ║
-╠ Version => 1.0                                                                                                ║
+╠ SobhanBagherian => https://github.com/SobhanBagherian/Recon                                               ║
+╠ ErSHaD => https://github.com/0xErSHaD/Recon                                                               ║
+╠ Version => 1.0                                                                                            ║
 ╠════════════════════════════════════════════════[ information ]════════════════════════════════════════════════╣
 ╠ python3 recon-dos.py --url <URL> --depth <depth URL> --sub <SUBDOMAIN> --ip  <IP_ADDRESS> --save <SAVE_FILE>  ║
 ║                                                                                                               ║
@@ -501,7 +504,7 @@ def print_all(url,depth):
         print(wappalyzer(url))
         print(whoiss(url))
         print(regex(url))
-        result = requests.get(f"https://yourdomain.com/Recon/recon-get.php?link={str(url)}&title={title(url)}&status={str(status_code(url))}&subdomain={str(sub_domain(url))}&port={str(port(url))}&wapplayzer={str(wappalyzer(url))}&whois={str(whoiss(url))}&regex={str(regex(url))}")
+        result = requests.get(f"{API_URL}?link={str(url)}&title={title(url)}&status={str(status_code(url))}&subdomain={str(sub_domain(url))}&port={str(port(url))}&wapplayzer={str(wappalyzer(url))}&whois={str(whoiss(url))}&regex={str(regex(url))}")
         if result.status_code == 200 :
             print("ok")
         with open("report.txt", "a") as file:
@@ -513,7 +516,7 @@ def print_all(url,depth):
             print(port(links[i]))
             with open("report.txt", "a") as file:
                 file.write(links[i] + "\n" + title(url) + "\n" + str(status_code(links[i] )) + "\n" + str(sub_domain(links[i])) + "\n" + str(port(links[i])) + str(wappalyzer(links[i])) + "\n" + str(whoiss(url)) + "\n" + str(regex(url)) + "\n\n\n")
-                result = requests.get(f"https://yourdomain.com/Recon/recon-get.php?link={links[i]}&title={title(links[i])}&status={str(status_code(links[i] ))}&subdomain={str(sub_domain(links[i]))}&port={str(port(links[i]))}&wapplayzer={str(wappalyzer(links[i]))}&whois={str(whoiss(links[i]))}&regex={str(regex(url))}")
+                result = requests.get(f"{API_URL}?link={links[i]}&title={title(links[i])}&status={str(status_code(links[i] ))}&subdomain={str(sub_domain(links[i]))}&port={str(port(links[i]))}&wapplayzer={str(wappalyzer(links[i]))}&whois={str(whoiss(links[i]))}&regex={str(regex(url))}")
                 if result.status_code == 200 :
                     print("ok")
             # screenshot(links[i])
@@ -522,7 +525,7 @@ def print_all(url,depth):
         print(wappalyzer(url))
         print(whoiss(url))
         print(regex(url))
-        result = requests.get(f"https://yourdomain.com/Recon/recon-get.php?link={str(url)}&title={title(url)}&status={str(status_code(url))}&subdomain={str(sub_domain(url))}&port={str(port(url))}&wapplayzer={str(wappalyzer(url))}&whois={str(whoiss(url))}&regex={str(regex(url))}")
+        result = requests.get(f"{API_URL}?link={str(url)}&title={title(url)}&status={str(status_code(url))}&subdomain={str(sub_domain(url))}&port={str(port(url))}&wapplayzer={str(wappalyzer(url))}&whois={str(whoiss(url))}&regex={str(regex(url))}")
         if result.status_code == 200 :
             print("ok")
         with open("report.txt", "a") as file:
@@ -533,7 +536,7 @@ def print_all(url,depth):
             print(port(links_depth[i]))
             with open("report.txt", "a") as file:
                 file.write(links_depth[i] + "\n" + title(links_depth[i]) + "\n" + str(status_code(links_depth[i] )) + "\n" + str(sub_domain(links_depth[i])) + "\n" + str(port(links_depth[i])) + str(wappalyzer(links_depth[i])) + "\n" + str(whoiss(url)) + "\n" + str(regex(url)) + "\n\n\n")
-                result = requests.get(f"https://yourdomain.com/Recon/recon-get.php?link={links_depth[i]}&title={title(links_depth[i])}&status={str(status_code(links_depth[i] ))}&subdomain={str(sub_domain(links_depth[i]))}&port={str(port(links_depth[i]))}&wapplayzer={str(wappalyzer(links_depth[i]))}&whois={str(whoiss(links_depth[i]))}&regex={str(regex(url))}")
+                result = requests.get(f"{API_URL}?link={links_depth[i]}&title={title(links_depth[i])}&status={str(status_code(links_depth[i] ))}&subdomain={str(sub_domain(links_depth[i]))}&port={str(port(links_depth[i]))}&wapplayzer={str(wappalyzer(links_depth[i]))}&whois={str(whoiss(links_depth[i]))}&regex={str(regex(url))}")
                 if result.status_code == 200 :
                     print("ok")
             # screenshot(links_depth[i])
@@ -543,4 +546,3 @@ if args.url and args.tag and args.depth:
     print_all(args.url,args.depth)
 else :
     banner()
-
