@@ -28,12 +28,17 @@ This project was a true collaborative effort. We built the core tool together, w
   * Designed and managed the MySQL database to store the logs and results.
   * Built the entire bridge for data persistence without any backend intervention from my side.
 
-## ⚙️ Features (As they were envisioned)
-Despite its raw architecture, the tool packed several features we were proud of:
-1. **Sitemap Generation:** Crawling websites to extract all accessible links.
-2. **Port Scanner:** A raw, socket-based scanner to find open ports on target servers.
-3. **Admin Panel Finder:** Brute-forcing common directories to locate hidden login pages.
-4. **Cloud Logging:** Sending results directly to our PHP backend for remote storage and monitoring.
+## ✨ Features (A Full Reconnaissance Arsenal!)
+Despite the raw, hardcoded nature of the tool, it actually packs an impressive set of reconnaissance features based on standard security workflows:
+
+*   🕸️ **Deep-Dive Sitemap:** Crawls target URLs (up to depth 2) using `BeautifulSoup` to map out the website's structure and uncover hidden links.
+*   🔎 **Subdomain & DNS Enumeration:** Uses wordlists and `dnspython` to discover hidden subdomains, then maps them directly to their underlying IP addresses using sockets.
+*   🏷️ **Status & Title Inspector:** Automatically fetches HTTP status codes and page titles to quickly separate live, active pages from dead ends.
+*   📡 **Socket-Based Port Scanner:** Scans discovered IPs for common open ports to identify running services and potential entry points.
+*   🕵️ **Regex Data Extraction:** Scours HTML source codes using Regex to automatically harvest exposed email addresses and phone numbers.
+*   📜 **Whois Lookup:** Retrieves domain registration data (owner info, creation dates) directly from the command line.
+*   💻 **Argparse CLI:** A clean, user-friendly command-line interface to control all these modules efficiently.
+*   ☁️ **Custom PHP/MySQL Backend:** Instead of a local database, the CLI logs all reconnaissance data directly to a remote PHP server for persistent remote storage.
 
 ## 🚀 How It Actually Works (Setup & Execution)
 Since this tool relies on a custom backend to log and process data, simply running the Python script won't work out of the box. You need to set up the infrastructure first:
