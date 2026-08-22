@@ -1,4 +1,4 @@
-# 🔎 Recon: A Retro Security & Web Tool (Legacy Project)
+# 🔎 Recon: Security Web Tool (Legacy Project)
 
 > **"Every complex system we understand today, started with a messy, hardcoded experiment yesterday."**
 
